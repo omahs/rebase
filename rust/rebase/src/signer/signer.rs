@@ -1,11 +1,7 @@
 use async_trait::async_trait;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
-use ssi::{
-    one_or_many::OneOrMany,
-    vc::{Credential, Proof},
-};
-
+use ssi::{ldp::Proof, one_or_many::OneOrMany, vc::Credential};
 use thiserror::Error;
 
 #[derive(Error, Debug)]
@@ -24,9 +20,6 @@ pub enum SignerError {
 
     #[error("failed to verify signature for {signer_type:?}, {reason:?}")]
     InvalidSignature { signer_type: String, reason: String },
-
-    #[error("{0}")]
-    SSI(#[from] ssi::error::Error),
 
     // TODO: Remove!
     #[error("this feature is unimplemented")]
