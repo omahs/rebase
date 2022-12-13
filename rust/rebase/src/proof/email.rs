@@ -8,9 +8,11 @@ use crate::{
 };
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
-#[derive(Clone, Deserialize, JsonSchema, Serialize)]
+#[derive(Clone, Deserialize, JsonSchema, Serialize, TS)]
 #[serde(rename = "proof")]
+#[ts(export, export_to = "bindings/proof/Email.ts")]
 pub struct Email {
     pub auth: String,
     pub signature: String,

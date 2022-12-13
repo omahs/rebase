@@ -17,9 +17,11 @@ use reqwest::{
 use schemars::schema_for;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
+use ts_rs::TS;
 use url::Url;
 
-#[derive(Clone, Deserialize, Serialize)]
+#[derive(Clone, Deserialize, Serialize, TS)]
+#[ts(export, export_to = "bindings/flow/Email.ts")]
 pub struct SendGridBasic {
     api_key: String,
     from_addr: String,

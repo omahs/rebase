@@ -7,16 +7,14 @@ use did_web::DIDWeb;
 use ed25519_dalek::{
     ed25519::signature::Signature, Keypair, PublicKey, SecretKey, Signer as InnerSigner, Verifier,
 };
-
 use hex;
+use serde::{Deserialize, Serialize};
 use ssi::{
     jwk::{Params, JWK},
     ldp::Proof,
     one_or_many::OneOrMany,
     vc::{Credential, LinkedDataProofOptions, URI},
 };
-
-use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Deserialize, Serialize)]
 pub struct DidWebJwk {

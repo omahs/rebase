@@ -2,8 +2,10 @@ use crate::types::{error::ContentError, types::Content};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use ssi::{one_or_many::OneOrMany, vc::Evidence};
+use ts_rs::TS;
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, TS)]
+#[ts(export, export_to = "bindings/content/BasicProfile.ts")]
 pub struct BasicProfile {
     pub alias: String,
     pub description: String,

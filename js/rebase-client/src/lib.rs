@@ -4,6 +4,7 @@ use rebase_witness_sdk::{
     client::{Client as RebaseClient, Endpoints},
     types::{InstructionsReq, StatementReq, WitnessReq},
 };
+
 // use serde_json::from_str;
 use js_sys::Promise;
 use std::sync::Arc;

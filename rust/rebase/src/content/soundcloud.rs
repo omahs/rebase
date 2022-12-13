@@ -8,8 +8,10 @@ use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use ssi::{one_or_many::OneOrMany, vc::Evidence};
+use ts_rs::TS;
 
-#[derive(Clone, Deserialize, JsonSchema, Serialize)]
+#[derive(Clone, Deserialize, JsonSchema, Serialize, TS)]
+#[ts(export, export_to = "bindings/content/SoundCloud.ts")]
 pub struct SoundCloud {
     pub subject: Subjects,
     pub statement: String,

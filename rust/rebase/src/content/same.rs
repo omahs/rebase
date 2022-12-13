@@ -7,9 +7,10 @@ use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use ssi::{one_or_many::OneOrMany, vc::Evidence};
+use ts_rs::TS;
 
-#[derive(Clone, Deserialize, JsonSchema, Serialize)]
-#[serde(rename = "same")]
+#[derive(Clone, Deserialize, JsonSchema, Serialize, TS)]
+#[ts(export, export_to = "bindings/content/Same.ts")]
 pub struct Same {
     pub id1: Subjects,
     pub id2: Subjects,

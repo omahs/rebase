@@ -5,9 +5,11 @@ use crate::types::{
 };
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
-#[derive(Clone, Deserialize, JsonSchema, Serialize)]
+#[derive(Clone, Deserialize, JsonSchema, Serialize, TS)]
 #[serde(rename = "statement")]
+#[ts(export, export_to = "bindings/statement/Reddit.ts")]
 pub struct Reddit {
     pub handle: String,
     pub subject: Subjects,

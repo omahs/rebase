@@ -9,9 +9,10 @@ use serde::{Deserialize, Serialize};
 use serde_json::json;
 use ssi::{one_or_many::OneOrMany, vc::Evidence};
 use std::collections::HashMap;
+use ts_rs::TS;
 
-#[derive(Clone, Deserialize, JsonSchema, Serialize)]
-#[serde(rename = "contents")]
+#[derive(Clone, Deserialize, JsonSchema, Serialize, TS)]
+#[ts(export, export_to = "bindings/content/Dns.ts")]
 pub struct Dns {
     pub domain: String,
     pub subject: Subjects,

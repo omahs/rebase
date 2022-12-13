@@ -17,9 +17,11 @@ use reqwest::{
 use schemars::schema_for;
 use serde::{Deserialize, Serialize};
 use serde_json::map::Map;
+use ts_rs::TS;
 use url::Url;
 
-#[derive(Deserialize, Serialize)]
+#[derive(Clone, Deserialize, Serialize, TS)]
+#[ts(export, export_to = "bindings/flow/GitHub.ts")]
 pub struct GitHubFlow {
     pub user_agent: String,
     pub delimitor: String,

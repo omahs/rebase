@@ -11,9 +11,11 @@ use async_trait::async_trait;
 use reqwest::Client;
 use schemars::schema_for;
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 use url::Url;
 
-#[derive(Deserialize, Serialize)]
+#[derive(Clone, Deserialize, Serialize, TS)]
+#[ts(export, export_to = "bindings/flow/Dns.ts")]
 pub struct DnsFlow {}
 
 #[derive(Deserialize, Debug)]

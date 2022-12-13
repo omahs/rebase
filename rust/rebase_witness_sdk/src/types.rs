@@ -1,3 +1,4 @@
+use async_trait::async_trait;
 pub use rebase::issuer;
 use rebase::{
     content::{
@@ -26,12 +27,12 @@ use rebase::{
         },
     },
 };
-
-use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
+use ts_rs::TS;
 
-#[derive(Clone, Deserialize, Serialize)]
+#[derive(Clone, Deserialize, Serialize, TS)]
+#[ts(export)]
 pub enum InstructionsType {
     #[serde(rename = "dns")]
     Dns,
@@ -49,7 +50,8 @@ pub enum InstructionsType {
     Twitter,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, TS)]
+#[ts(export)]
 pub enum Contents {
     Dns(DnsCtnt),
     Email(EmailCtnt),
@@ -111,8 +113,9 @@ impl Content for Contents {
     }
 }
 
-#[derive(Clone, Deserialize, Serialize)]
+#[derive(Clone, Deserialize, Serialize, TS)]
 #[serde(rename = "opts")]
+#[ts(export)]
 pub enum Statements {
     #[serde(rename = "dns")]
     Dns(DnsStmt),
@@ -144,8 +147,9 @@ impl Statement for Statements {
     }
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, TS)]
 #[serde(rename = "proof")]
+#[ts(export)]
 pub enum Proofs {
     #[serde(rename = "dns")]
     Dns(DnsStmt),
@@ -191,7 +195,8 @@ impl Proof<Contents> for Proofs {
     }
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, TS)]
+#[ts(export)]
 pub struct WitnessFlow {
     dns: Option<DnsFlow>,
     email: Option<EmailFlow>,
@@ -299,24 +304,28 @@ impl Flow<Contents, Statements, Proofs> for WitnessFlow {
         }
     }
 }
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, TS)]
+#[ts(export)]
 pub struct InstructionsReq {
     #[serde(rename = "type")]
     pub instruction_type: InstructionsType,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, TS)]
+#[ts(export)]
 pub struct StatementReq {
     // TODO: Change name?
     pub opts: Statements,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, TS)]
+#[ts(export)]
 pub struct WitnessReq {
     pub proof: Proofs,
 }
 
-#[derive(Clone, Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, TS)]
+#[ts(export)]
 pub struct WitnessJWTRes {
     pub jwt: String,
 }

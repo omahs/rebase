@@ -11,8 +11,10 @@ use crate::{
 use async_trait::async_trait;
 use schemars::schema_for;
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, TS)]
+#[ts(export, export_to = "bindings/flow/Same.ts")]
 pub struct SameFlow {}
 
 #[async_trait(?Send)]

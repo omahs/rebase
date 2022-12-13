@@ -8,9 +8,11 @@ use crate::{
 };
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
-#[derive(Clone, Deserialize, JsonSchema, Serialize)]
+#[derive(Clone, Deserialize, JsonSchema, Serialize, TS)]
 #[serde(rename = "proof")]
+#[ts(export, export_to = "bindings/proof/Twitter.ts")]
 pub struct Twitter {
     pub statement: Stmt,
     pub tweet_url: String,
