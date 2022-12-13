@@ -3,6 +3,7 @@
 
 # Rust
 target
+bindings
 
 ### Emacs ###
 # -*- mode: gitignore; -*-
